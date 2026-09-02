@@ -63,6 +63,8 @@ function Navbar() {
         </nav>
 
         <div className="navbar-actions">
+          <ThemeToggle />
+
           <a href="#contact" className="navbar-cta desktop-cta">
             Let's Talk
             <ArrowUpRight size={17} />
@@ -72,33 +74,15 @@ function Navbar() {
             type="button"
             className="navbar-toggle"
             onClick={() => setMenuOpen((current) => !current)}
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              menuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
             aria-expanded={menuOpen}
           >
             {menuOpen ? <X /> : <Menu />}
           </button>
-        </div>
-        <div className="navbar-actions">
-            <ThemeToggle />
-
-            <a href="#contact" className="navbar-cta desktop-cta">
-                Let's Talk
-                <ArrowUpRight size={17} />
-            </a>
-
-            <button
-                type="button"
-                className="navbar-toggle"
-                onClick={() => setMenuOpen((current) => !current)}
-                aria-label={
-                menuOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-                }
-                aria-expanded={menuOpen}
-            >
-                {menuOpen ? <X /> : <Menu />}
-            </button>
         </div>
       </div>
     </header>
