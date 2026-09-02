@@ -1,0 +1,539 @@
+/* =========================================================
+   HERO PORTRAIT 3D
+========================================================= */
+
+.portrait-3d-wrapper {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+/* =========================================================
+   MAIN 3D OBJECT
+========================================================= */
+
+.portrait-orb {
+  position: relative;
+
+  width: min(82%, 500px);
+  aspect-ratio: 1 / 1;
+
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* =========================================================
+   PROFILE IMAGE CARD
+========================================================= */
+
+.portrait-image-shell {
+  position: absolute;
+
+  width: 72%;
+  height: 82%;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 5;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 52%,
+      transparent
+    );
+
+  background: var(--surface);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.34),
+    0 0 45px var(--accent-soft),
+    0 0 100px
+      color-mix(
+        in srgb,
+        var(--accent) 16%,
+        transparent
+      );
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(48px);
+
+  transform-style: preserve-3d;
+}
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.portrait-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center top;
+
+  border-radius: inherit;
+
+  transform-origin: center;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  filter:
+    contrast(1.03)
+    saturate(0.96)
+    brightness(0.98);
+
+  will-change:
+    transform,
+    opacity;
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.portrait-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      145deg,
+      transparent 30%,
+      color-mix(
+        in srgb,
+        var(--accent) 8%,
+        transparent
+      ) 65%,
+      color-mix(
+        in srgb,
+        var(--accent) 18%,
+        transparent
+      )
+    );
+}
+
+/* =========================================================
+   GLASS REFLECTION
+========================================================= */
+
+.portrait-glass-highlight {
+  position: absolute;
+
+  z-index: 3;
+
+  top: -15%;
+  left: -8%;
+
+  width: 48%;
+  height: 135%;
+
+  border-radius: 40px;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.025) 44%,
+      transparent 72%
+    );
+
+  filter: blur(3px);
+
+  transform: rotate(-14deg);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.portrait-glow {
+  position: absolute;
+
+  z-index: 1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(55px);
+}
+
+.portrait-glow-one {
+  width: 58%;
+  height: 58%;
+
+  top: 0;
+  right: -4%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 38%,
+      transparent
+    );
+
+  opacity: 0.72;
+
+  animation: portraitGlowOne 6s ease-in-out infinite alternate;
+}
+
+.portrait-glow-two {
+  width: 42%;
+  height: 42%;
+
+  bottom: 2%;
+  left: -3%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 25%,
+      transparent
+    );
+
+  opacity: 0.58;
+
+  animation: portraitGlowTwo 7s ease-in-out infinite alternate;
+}
+
+@keyframes portraitGlowOne {
+  from {
+    transform:
+      translate3d(0, 0, 0)
+      scale(0.92);
+  }
+
+  to {
+    transform:
+      translate3d(-18px, 16px, 0)
+      scale(1.12);
+  }
+}
+
+@keyframes portraitGlowTwo {
+  from {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(20px, -14px, 0)
+      scale(1.15);
+  }
+}
+
+/* =========================================================
+   ORBIT RINGS
+========================================================= */
+
+.portrait-orbit {
+  position: absolute;
+
+  z-index: 3;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 42%,
+      transparent
+    );
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform-style: preserve-3d;
+}
+
+.portrait-orbit-one {
+  inset: 2%;
+
+  animation:
+    portraitOrbitOne
+    14s
+    linear
+    infinite;
+}
+
+.portrait-orbit-two {
+  inset: -5%;
+
+  opacity: 0.48;
+
+  animation:
+    portraitOrbitTwo
+    18s
+    linear
+    infinite;
+}
+
+.portrait-orbit span {
+  position: absolute;
+
+  top: -5px;
+  left: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 10px var(--accent),
+    0 0 22px var(--accent),
+    0 0 34px
+      color-mix(
+        in srgb,
+        var(--accent) 60%,
+        transparent
+      );
+}
+
+@keyframes portraitOrbitOne {
+  from {
+    transform:
+      rotateZ(0deg)
+      rotateX(62deg)
+      rotateY(12deg);
+  }
+
+  to {
+    transform:
+      rotateZ(360deg)
+      rotateX(62deg)
+      rotateY(12deg);
+  }
+}
+
+@keyframes portraitOrbitTwo {
+  from {
+    transform:
+      rotateZ(360deg)
+      rotateY(66deg)
+      rotateX(10deg);
+  }
+
+  to {
+    transform:
+      rotateZ(0deg)
+      rotateY(66deg)
+      rotateX(10deg);
+  }
+}
+
+/* =========================================================
+   IMAGE NUMBER
+========================================================= */
+
+.portrait-number {
+  position: absolute;
+
+  right: -1%;
+  bottom: 8%;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 9px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 84%,
+      transparent
+    );
+
+  color: var(--text);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.14);
+
+  transform: translateZ(90px);
+}
+
+.portrait-number span {
+  color: var(--text-muted);
+
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+[data-theme="dark"] .portrait-image-shell {
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.48),
+    0 0 48px var(--accent-soft),
+    0 0 105px
+      color-mix(
+        in srgb,
+        var(--accent) 18%,
+        transparent
+      );
+}
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+[data-theme="light"] .portrait-image-shell {
+  box-shadow:
+    0 25px 70px rgba(17, 17, 20, 0.13),
+    0 0 48px var(--accent-soft);
+}
+
+[data-theme="light"] .portrait-image-overlay {
+  opacity: 0.58;
+}
+
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media (max-width: 1200px) {
+  .portrait-orb {
+    width: min(80%, 460px);
+  }
+
+  .portrait-image-shell {
+    width: 74%;
+    height: 82%;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .portrait-orb {
+    width: min(72%, 420px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .portrait-3d-wrapper {
+    perspective: 1000px;
+  }
+
+  .portrait-orb {
+    width: min(78%, 360px);
+  }
+
+  .portrait-image-shell {
+    width: 74%;
+    height: 80%;
+
+    border-radius: 28px;
+  }
+
+  .portrait-number {
+    right: -3%;
+    bottom: 7%;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .portrait-orb {
+    width: min(82%, 300px);
+  }
+
+  .portrait-image-shell {
+    width: 76%;
+    height: 80%;
+
+    border-radius: 24px;
+  }
+
+  .portrait-orbit-one {
+    inset: 3%;
+  }
+
+  .portrait-orbit-two {
+    inset: -3%;
+  }
+
+  .portrait-number {
+    right: -6%;
+
+    padding: 7px 11px;
+
+    font-size: 0.64rem;
+  }
+
+  .portrait-number span {
+    font-size: 0.54rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-orbit-one,
+  .portrait-orbit-two,
+  .portrait-glow-one,
+  .portrait-glow-two {
+    animation: none;
+  }
+
+  .portrait-orb,
+  .portrait-image {
+    transition: none;
+  }
+}

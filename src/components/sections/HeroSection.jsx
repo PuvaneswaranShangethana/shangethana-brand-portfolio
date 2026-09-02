@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 
-import HeroOrb from "../three/HeroOrb";
+import HeroPortrait3D from "../three/HeroPortrait3D";
 import "./HeroSection.css";
 
 function HeroSection() {
@@ -132,7 +132,7 @@ function HeroSection() {
 
         <div className="hero-visual">
           <div className="hero-visual-frame">
-            <HeroOrb />
+            <HeroPortrait3D />
 
             <span className="hero-visual-label hero-label-top">
               DESIGN
