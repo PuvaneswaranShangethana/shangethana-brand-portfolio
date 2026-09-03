@@ -10,83 +10,18 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { careerJourney } from "../../data/career";
+
 import "./CareerJourney.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const journeySteps = [
-  {
-    id: "01",
-    stage: "NOW",
-    icon: GraduationCap,
-    title: "Software Engineering Undergraduate",
-    description:
-      "Currently studying Software Engineering while building practical experience through academic projects, personal development work and continuous technical learning.",
-    focus: [
-      "Software Engineering Fundamentals",
-      "Full-Stack Development",
-      "Databases",
-      "UI/UX",
-      "AI Fundamentals",
-    ],
-    status: "Current Stage",
-    type: "current",
-  },
-
-  {
-    id: "02",
-    stage: "NEXT",
-    icon: Code2,
-    title: "Junior Software Engineer",
-    description:
-      "My first professional career goal is to begin as a Junior Software Engineer, strengthen real-world development experience and grow within professional software teams.",
-    focus: [
-      "Production Development",
-      "Clean Code",
-      "Testing & Debugging",
-      "Team Collaboration",
-      "Software Architecture",
-    ],
-    status: "First Career Goal",
-    type: "next",
-  },
-
-  {
-    id: "03",
-    stage: "THEN",
-    icon: BrainCircuit,
-    title: "AI Engineer",
-    description:
-      "After building strong software engineering experience, my goal is to specialise further in artificial intelligence and intelligent product development.",
-    focus: [
-      "Python",
-      "Machine Learning",
-      "AI Systems",
-      "Model Integration",
-      "AI Product Development",
-    ],
-    status: "Specialisation Goal",
-    type: "future",
-  },
-
-  {
-    id: "04",
-    stage: "FUTURE",
-    icon: Rocket,
-    title: "Entrepreneur",
-    description:
-      "My long-term ambition is to combine software engineering, artificial intelligence, design, leadership and product thinking to build useful technology products and businesses.",
-    focus: [
-      "Product Development",
-      "Innovation",
-      "Business Strategy",
-      "Leadership",
-      "Technology Entrepreneurship",
-    ],
-    status: "Long-Term Vision",
-    type: "vision",
-  },
-];
+const journeyIcons = {
+  graduation: GraduationCap,
+  code: Code2,
+  ai: BrainCircuit,
+  rocket: Rocket,
+};
 
 function CareerJourney() {
   const sectionRef = useRef(null);
@@ -150,7 +85,6 @@ function CareerJourney() {
             scaleX: 1,
             transformOrigin: "left center",
             ease: "none",
-
             scrollTrigger: {
               trigger: ".journey-track",
               start: "top 80%",
@@ -230,8 +164,9 @@ function CareerJourney() {
           </div>
 
           <div className="journey-grid">
-            {journeySteps.map((step) => {
-              const Icon = step.icon;
+            {careerJourney.map((step) => {
+              const Icon =
+                journeyIcons[step.icon] ?? GraduationCap;
 
               return (
                 <article
@@ -239,7 +174,9 @@ function CareerJourney() {
                   key={step.id}
                 >
                   <div className="journey-card-marker">
-                    <span>{step.id}</span>
+                    <span>
+                      {step.id}
+                    </span>
                   </div>
 
                   <div className="journey-card-top">
@@ -259,7 +196,9 @@ function CareerJourney() {
                     {step.status}
                   </span>
 
-                  <h3>{step.title}</h3>
+                  <h3>
+                    {step.title}
+                  </h3>
 
                   <p className="journey-description">
                     {step.description}

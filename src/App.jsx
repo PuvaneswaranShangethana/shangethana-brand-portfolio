@@ -13,9 +13,16 @@ import Footer from "./components/layout/Footer";
 function App() {
   return (
     <>
+      <a
+        href="#main-content"
+        className="skip-link"
+      >
+        Skip to main content
+      </a>
+
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <HeroSection />
         <CareerJourney />
         <AboutSection />

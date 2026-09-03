@@ -9,52 +9,18 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { education } from "../../data/education";
+
 import "./EducationSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const education = [
-  {
-    id: "01",
-    icon: GraduationCap,
-    period: "2026 — Present",
-    qualification: "BEng (Hons)",
-    field: "Computer Software Engineering",
-    institution: "London Metropolitan University",
-    location: "via ESOFT Metro Campus",
-    status: "Current",
-  },
-  {
-    id: "02",
-    icon: BookOpen,
-    period: "2024 — 2026",
-    qualification: "Higher National Diploma in Computing",
-    field: "Software Engineering",
-    institution: "ESOFT Metro Campus",
-    location: "Sri Lanka",
-    status: "Completed",
-  },
-  {
-    id: "03",
-    icon: Award,
-    period: "2021",
-    qualification: "NVQ Level 4",
-    field: "Computer Graphics Designing",
-    institution: "Vocational Qualification",
-    location: "Sri Lanka",
-    status: "Completed",
-  },
-  {
-    id: "04",
-    icon: School,
-    period: "2020",
-    qualification: "G.C.E. Advanced Level",
-    field: "Secondary Education",
-    institution: "Sri Lanka",
-    location: "",
-    status: "Completed",
-  },
-];
+const educationIcons = {
+  graduation: GraduationCap,
+  book: BookOpen,
+  award: Award,
+  school: School,
+};
 
 function EducationSection() {
   const sectionRef = useRef(null);
@@ -97,7 +63,9 @@ function EducationSection() {
       });
     }, sectionRef);
 
-    return () => context.revert();
+    return () => {
+      context.revert();
+    };
   }, []);
 
   return (
@@ -126,26 +94,30 @@ function EducationSection() {
 
           <p className="education-intro">
             My academic journey combines software engineering, computing and
-            design foundations that support my long-term path toward software
-            engineering, AI and entrepreneurship.
+            design foundations that support my future path toward Junior
+            Software Engineering, AI Engineering and entrepreneurship.
           </p>
         </header>
 
         <div className="education-list">
           {education.map((item) => {
-            const Icon = item.icon;
+            const Icon =
+              educationIcons[item.icon] ?? GraduationCap;
 
             return (
               <article
                 className="education-item"
                 key={item.id}
               >
-                <div className="education-index">
+                <span className="education-index">
                   {item.id}
-                </div>
+                </span>
 
                 <div className="education-icon">
-                  <Icon size={22} strokeWidth={1.8} />
+                  <Icon
+                    size={22}
+                    strokeWidth={1.8}
+                  />
                 </div>
 
                 <div className="education-main">

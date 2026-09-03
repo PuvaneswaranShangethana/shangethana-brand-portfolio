@@ -3,6 +3,7 @@ import {
   ArrowDownRight,
   ArrowUpRight,
 } from "lucide-react";
+
 import gsap from "gsap";
 
 import HeroPortrait3D from "../three/HeroPortrait3D";
@@ -25,6 +26,7 @@ function HeroSection() {
           y: 18,
           duration: 0.6,
         })
+
         .from(
           ".hero-title-line",
           {
@@ -36,6 +38,7 @@ function HeroSection() {
           },
           "-=0.2"
         )
+
         .from(
           ".hero-description",
           {
@@ -45,15 +48,7 @@ function HeroSection() {
           },
           "-=0.4"
         )
-        .from(
-          ".hero-career-note",
-          {
-            opacity: 0,
-            y: 18,
-            duration: 0.6,
-          },
-          "-=0.4"
-        )
+
         .from(
           ".hero-actions",
           {
@@ -63,26 +58,32 @@ function HeroSection() {
           },
           "-=0.4"
         )
+
         .from(
           ".hero-meta",
           {
             opacity: 0,
-            duration: 0.8,
+            y: 12,
+            duration: 0.7,
           },
-          "-=0.2"
+          "-=0.25"
         )
+
         .from(
           ".hero-visual",
           {
             opacity: 0,
             scale: 0.92,
-            duration: 1.1,
+            x: 35,
+            duration: 1.05,
           },
-          "-=1"
+          "-=0.9"
         );
     }, heroRef);
 
-    return () => context.revert();
+    return () => {
+      context.revert();
+    };
   }, []);
 
   return (
@@ -92,9 +93,17 @@ function HeroSection() {
       ref={heroRef}
     >
       <div className="container hero-layout">
+        {/* =========================================
+            HERO CONTENT
+        ========================================== */}
+
         <div className="hero-copy">
           <p className="hero-kicker">
-            SOFTWARE ENGINEERING × AI × PRODUCT DESIGN
+            SOFTWARE ENGINEERING UNDERGRADUATE
+            {" • "}
+            AI LEARNER
+            {" • "}
+            UI/UX DESIGNER
           </p>
 
           <h1 className="hero-title">
@@ -112,12 +121,15 @@ function HeroSection() {
           </h1>
 
           <p className="hero-description">
-            Software Engineering undergraduate building practical
-            applications across full-stack development, artificial
-            intelligence, databases and user-centred design.
+            I am a Software Engineering undergraduate building practical
+            experience through academic and personal projects in full-stack
+            development, databases, artificial intelligence and user-centred
+            design.
           </p>
 
-          
+          {/* =========================================
+              ACTION BUTTONS
+          ========================================== */}
 
           <div className="hero-actions">
             <a
@@ -125,7 +137,11 @@ function HeroSection() {
               className="btn btn-primary"
             >
               Explore Projects
-              <ArrowUpRight size={18} />
+
+              <ArrowUpRight
+                size={18}
+                strokeWidth={1.8}
+              />
             </a>
 
             <a
@@ -133,18 +149,32 @@ function HeroSection() {
               className="btn btn-secondary"
             >
               About Me
-              <ArrowDownRight size={18} />
+
+              <ArrowDownRight
+                size={18}
+                strokeWidth={1.8}
+              />
             </a>
           </div>
 
+          {/* =========================================
+              META
+          ========================================== */}
+
           <div className="hero-meta">
-            <span>Batticaloa, Sri Lanka</span>
+            <span>
+              Batticaloa, Sri Lanka
+            </span>
 
             <span>
-              Open to junior software engineering opportunities
+              Preparing for Junior Software Engineering opportunities
             </span>
           </div>
         </div>
+
+        {/* =========================================
+            3D PORTRAIT
+        ========================================== */}
 
         <div className="hero-visual">
           <div className="hero-visual-frame">
@@ -159,7 +189,7 @@ function HeroSection() {
             </span>
 
             <span className="hero-visual-label hero-label-bottom">
-              PRODUCT
+              DESIGN
             </span>
           </div>
         </div>

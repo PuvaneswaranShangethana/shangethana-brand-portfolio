@@ -11,109 +11,28 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import {
+  skillGroups,
+  technicalAreas,
+} from "../../data/skills";
+
 import "./SkillsSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skillGroups = [
-  {
-    id: "01",
-    title: "Used in Projects",
-    status: "used",
-    icon: Layers3,
-    description:
-      "Technologies and tools I have already applied in academic, personal or development projects.",
-    skills: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React",
-      "Python",
-      "FastAPI",
-      "Flutter",
-      "Dart",
-      "C#",
-      "PHP",
-      "MySQL",
-      "SQL Server",
-      "Firebase",
-      "REST APIs",
-      "Git",
-      "GitHub",
-      "Figma",
-    ],
-  },
+const skillIcons = {
+  used: Layers3,
+  learning: BrainCircuit,
+  future: Sparkles,
+};
 
-  {
-    id: "02",
-    title: "Currently Learning",
-    status: "learning",
-    icon: BrainCircuit,
-    description:
-      "Areas I am actively strengthening as I prepare for software engineering and future AI-focused roles.",
-    skills: [
-      "Advanced React",
-      "Node.js",
-      "Express.js",
-      "Machine Learning",
-      "scikit-learn",
-      "AI API Integration",
-      "Gemini AI",
-      "Software Testing",
-      "Clean Code",
-      "System Design",
-      "Secure Web Development",
-    ],
-  },
-
-  {
-    id: "03",
-    title: "Next to Explore",
-    status: "future",
-    icon: Sparkles,
-    description:
-      "Technologies and engineering areas I plan to explore as my career progresses toward AI engineering.",
-    skills: [
-      "TypeScript",
-      "Next.js",
-      "Docker",
-      "Cloud Platforms",
-      "CI/CD",
-      "Deep Learning",
-      "LLM Applications",
-      "MLOps",
-      "Advanced System Architecture",
-    ],
-  },
-];
-
-const technicalAreas = [
-  {
-    icon: Braces,
-    title: "Programming",
-    items: "JavaScript, Python, C#, Dart, PHP",
-  },
-  {
-    icon: Layers3,
-    title: "Application Development",
-    items: "React, Flutter, FastAPI, Node.js",
-  },
-  {
-    icon: Database,
-    title: "Data & Backend",
-    items: "MySQL, SQL Server, Firebase, REST APIs",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI Development",
-    items: "Python, scikit-learn, Gemini AI, AI APIs",
-  },
-  {
-    icon: Wrench,
-    title: "Tools",
-    items: "Git, GitHub, VS Code, Visual Studio, Postman, Figma",
-  },
-];
+const technicalIcons = {
+  code: Braces,
+  layers: Layers3,
+  database: Database,
+  ai: BrainCircuit,
+  tools: Wrench,
+};
 
 function SkillsSection() {
   const sectionRef = useRef(null);
@@ -140,6 +59,17 @@ function SkillsSection() {
         y: 70,
         stagger: 0.12,
         duration: 0.85,
+        ease: "power3.out",
+      });
+
+      gsap.from(".skills-intro", {
+        scrollTrigger: {
+          trigger: ".skills-intro",
+          start: "top 86%",
+        },
+        opacity: 0,
+        y: 24,
+        duration: 0.7,
         ease: "power3.out",
       });
 
@@ -180,6 +110,10 @@ function SkillsSection() {
       ref={sectionRef}
     >
       <div className="container">
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
         <header className="skills-header">
           <div className="skills-heading">
             <p className="skills-eyebrow">
@@ -204,21 +138,26 @@ function SkillsSection() {
           <div className="skills-intro">
             <p>
               My technical skills are continuously developing through
-              coursework, hands-on projects and independent learning. This
-              section reflects where each technology currently fits in my
-              learning journey.
+              academic work, practical projects and independent learning.
+              This section reflects how each technology currently fits
+              within my learning journey.
             </p>
 
             <span>
-              No percentages. No exaggerated skill ratings. Just practical
-              experience and continuous development.
+              Technologies are grouped by practical use and current learning
+              stage rather than percentage-based skill ratings.
             </span>
           </div>
         </header>
 
+        {/* =================================================
+            SKILL GROUPS
+        ================================================= */}
+
         <div className="skills-groups">
           {skillGroups.map((group) => {
-            const Icon = group.icon;
+            const Icon =
+              skillIcons[group.status] ?? Layers3;
 
             return (
               <article
@@ -231,7 +170,9 @@ function SkillsSection() {
                       {group.id}
                     </span>
 
-                    <span className={`skill-status ${group.status}`}>
+                    <span
+                      className={`skill-status ${group.status}`}
+                    >
                       {group.title}
                     </span>
                   </div>
@@ -262,9 +203,15 @@ function SkillsSection() {
 
         <div className="skills-divider" />
 
+        {/* =================================================
+            TECHNICAL AREAS
+        ================================================= */}
+
         <div className="technical-header">
           <div>
-            <span>TECHNICAL AREAS</span>
+            <span>
+              TECHNICAL AREAS
+            </span>
 
             <h3>
               Technologies grouped by how I use them.
@@ -272,14 +219,16 @@ function SkillsSection() {
           </div>
 
           <p>
-            These groups make the portfolio easy to update later as new
-            frameworks, programming languages and AI technologies are added.
+            This structure makes the portfolio easier to update as new
+            programming languages, frameworks, development tools and AI
+            technologies are added in the future.
           </p>
         </div>
 
         <div className="technical-areas">
           {technicalAreas.map((area) => {
-            const Icon = area.icon;
+            const Icon =
+              technicalIcons[area.icon] ?? Braces;
 
             return (
               <article
