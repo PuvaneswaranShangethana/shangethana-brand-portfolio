@@ -1,12 +1,18 @@
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
 .project-card {
+  position: relative;
+
   display: grid;
   grid-template-columns:
     minmax(0, 1.08fr)
-    minmax(320px, 0.92fr);
+    minmax(330px, 0.92fr);
 
-  gap: 42px;
+  gap: 46px;
 
-  padding: 36px 0;
+  padding: 40px 0;
 
   border-top: 1px solid var(--border);
 }
@@ -15,12 +21,45 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* FEATURED PROJECT */
-
 .project-card.featured {
   grid-template-columns:
-    minmax(0, 1.22fr)
-    minmax(320px, 0.78fr);
+    minmax(0, 1.2fr)
+    minmax(330px, 0.8fr);
+}
+
+/* =========================================================
+   ACADEMIC / PRODUCT DIFFERENCE
+========================================================= */
+
+.project-card-academic {
+  --project-card-accent:
+    var(--text-muted);
+}
+
+.project-card-product {
+  --project-card-accent:
+    var(--accent);
+}
+
+.project-card-product::before {
+  content: "";
+
+  position: absolute;
+
+  left: -20px;
+  top: 40px;
+  bottom: 40px;
+
+  width: 3px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--accent),
+      transparent
+    );
 }
 
 /* =========================================================
@@ -30,7 +69,7 @@
 .project-visual {
   position: relative;
 
-  min-height: 420px;
+  min-height: 430px;
 
   overflow: hidden;
 
@@ -42,10 +81,10 @@
       circle at 75% 25%,
       color-mix(
         in srgb,
-        var(--accent) 24%,
+        var(--accent) 20%,
         transparent
       ),
-      transparent 38%
+      transparent 40%
     ),
     linear-gradient(
       145deg,
@@ -59,18 +98,40 @@
     box-shadow 300ms ease;
 }
 
-.project-card:hover .project-visual {
+.project-card-product
+.project-visual {
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      color-mix(
+        in srgb,
+        var(--accent) 34%,
+        transparent
+      ),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      var(--surface),
+      var(--surface-soft)
+    );
+}
+
+.project-card:hover
+.project-visual {
   border-color:
     color-mix(
       in srgb,
-      var(--accent) 50%,
+      var(--accent) 48%,
       var(--border)
     );
 
-  transform: translateY(-4px);
+  transform:
+    translateY(-4px);
 
   box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.16);
+    0 24px 70px
+      rgba(0, 0, 0, 0.16);
 }
 
 .project-visual img {
@@ -83,11 +144,14 @@
     transform 450ms ease;
 }
 
-.project-card:hover .project-visual img {
+.project-card:hover
+.project-visual img {
   transform: scale(1.035);
 }
 
-/* PLACEHOLDER WHEN THERE IS NO IMAGE */
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
 
 .project-placeholder {
   position: absolute;
@@ -102,17 +166,20 @@
   padding: 34px;
 }
 
-.project-placeholder span {
+.project-placeholder > span {
+  max-width: 390px;
+
   color: var(--accent);
 
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 800;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
 }
 
 .project-placeholder strong {
-  max-width: 560px;
+  max-width: 580px;
 
   color: var(--text);
 
@@ -120,7 +187,7 @@
     clamp(
       2.5rem,
       5vw,
-      5.8rem
+      5.7rem
     );
 
   line-height: 0.92;
@@ -128,7 +195,20 @@
   letter-spacing: -0.055em;
 }
 
-/* PROJECT NUMBER */
+.project-placeholder small {
+  max-width: 420px;
+
+  color: var(--text-muted);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   PROJECT NUMBER
+========================================================= */
 
 .project-number {
   position: absolute;
@@ -165,7 +245,63 @@
   letter-spacing: 0.08em;
 
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+}
+
+/* =========================================================
+   ORIGIN LABEL
+========================================================= */
+
+.project-visual-origin {
+  position: absolute;
+
+  top: 22px;
+  left: 22px;
+
+  z-index: 3;
+
+  padding: 8px 11px;
+
+  border-radius: 999px;
+
+  font-size: 0.61rem;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(14px);
+}
+
+.project-visual-origin.academic {
+  border: 1px solid var(--border);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 86%,
+      transparent
+    );
+
+  color: var(--text-muted);
+}
+
+.project-visual-origin.product {
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 38%,
+      var(--border)
+    );
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 12%,
+      var(--surface)
+    );
+
+  color: var(--accent);
 }
 
 /* =========================================================
@@ -177,7 +313,7 @@
   flex-direction: column;
   justify-content: center;
 
-  padding: 20px 0;
+  padding: 18px 0;
 }
 
 .project-heading {
@@ -192,17 +328,16 @@
   min-width: 0;
 }
 
-/* CATEGORY */
-
 .project-category {
   margin-bottom: 12px;
 
   color: var(--accent);
 
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
 
   letter-spacing: 0.13em;
+
   text-transform: uppercase;
 }
 
@@ -225,14 +360,13 @@
   border: 1px solid var(--border);
   border-radius: 999px;
 
-  font-size: 0.64rem;
+  font-size: 0.61rem;
   font-weight: 800;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
+
   text-transform: uppercase;
 }
-
-/* STATUS DOT */
 
 .project-status-dot {
   width: 7px;
@@ -243,20 +377,32 @@
   border-radius: 50%;
 }
 
-/* IN DEVELOPMENT */
+/* Academic */
+
+.project-status.academic {
+  background: var(--surface);
+
+  color: var(--text-muted);
+}
+
+.project-status.academic
+.project-status-dot {
+  background: var(--text-muted);
+}
+
+/* Development */
 
 .project-status.development {
-  color: var(--accent);
-
-  background:
-    var(--accent-soft);
-
   border-color:
     color-mix(
       in srgb,
       var(--accent) 35%,
       var(--border)
     );
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
 }
 
 .project-status.development
@@ -268,43 +414,55 @@
       var(--accent-soft);
 }
 
-/* IN PROGRESS */
+/* Product */
 
-.project-status.progress {
-  color: #f59e0b;
+.project-status.product {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 48%,
+      var(--border)
+    );
 
   background:
-    rgba(245, 158, 11, 0.08);
+    color-mix(
+      in srgb,
+      var(--accent) 14%,
+      var(--surface)
+    );
 
-  border-color:
-    rgba(245, 158, 11, 0.24);
+  color: var(--accent);
 }
 
-.project-status.progress
+.project-status.product
 .project-status-dot {
-  background: #f59e0b;
+  background: var(--accent);
 
   box-shadow:
-    0 0 0 4px
-      rgba(245, 158, 11, 0.1);
+    0 0 0 5px
+      var(--accent-soft);
+
+  animation:
+    projectStatusPulse
+    1.8s
+    ease-in-out
+    infinite;
 }
 
-/* ACADEMIC */
+@keyframes projectStatusPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-.project-status.academic {
-  color: var(--text-muted);
-
-  background: var(--surface);
-
-  border-color: var(--border);
+  50% {
+    opacity: 0.45;
+  }
 }
 
-.project-status.academic
-.project-status-dot {
-  background: var(--text-muted);
-}
-
-/* PROJECT TITLE */
+/* =========================================================
+   TITLE
+========================================================= */
 
 .project-heading h3 {
   max-width: 620px;
@@ -315,7 +473,7 @@
     clamp(
       2.1rem,
       4vw,
-      4.2rem
+      4.1rem
     );
 
   line-height: 0.97;
@@ -323,7 +481,9 @@
   letter-spacing: -0.045em;
 }
 
-/* GITHUB ROUND BUTTON */
+/* =========================================================
+   GITHUB
+========================================================= */
 
 .project-github {
   width: 46px;
@@ -355,25 +515,83 @@
 
   border-color: var(--accent);
 
-  transform: translateY(-3px);
+  transform:
+    translateY(-3px);
 }
 
-/* DESCRIPTION */
+/* =========================================================
+   PROJECT TYPE INFO
+========================================================= */
+
+.project-type-info {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1px;
+
+  margin-top: 25px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--border);
+}
+
+.project-type-info > div {
+  min-width: 0;
+
+  padding: 15px;
+
+  background: var(--surface);
+}
+
+.project-type-info span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--text-muted);
+
+  font-size: 0.57rem;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.project-type-info strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  line-height: 1.45;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .project-description {
-  max-width: 600px;
+  max-width: 620px;
 
   margin-top: 24px;
 
   color: var(--text-muted);
 
-  font-size: 0.96rem;
+  font-size: 0.94rem;
 
   line-height: 1.75;
 }
 
 /* =========================================================
-   TECHNOLOGIES
+   TECHNOLOGY TAGS
 ========================================================= */
 
 .project-tech {
@@ -382,7 +600,7 @@
 
   gap: 8px;
 
-  margin-top: 26px;
+  margin-top: 25px;
 }
 
 .project-tech span {
@@ -395,7 +613,7 @@
 
   color: var(--text-muted);
 
-  font-size: 0.68rem;
+  font-size: 0.67rem;
   font-weight: 700;
 
   transition:
@@ -414,7 +632,8 @@
       var(--border)
     );
 
-  background: var(--accent-soft);
+  background:
+    var(--accent-soft);
 }
 
 /* =========================================================
@@ -429,11 +648,11 @@
 
   gap: 8px;
 
-  margin-top: 30px;
+  margin-top: 29px;
 
   color: var(--text);
 
-  font-size: 0.82rem;
+  font-size: 0.81rem;
   font-weight: 800;
 
   transition:
@@ -463,15 +682,21 @@
   .project-card.featured {
     grid-template-columns: 1fr;
 
-    gap: 28px;
+    gap: 30px;
   }
 
   .project-visual {
-    min-height: 380px;
+    min-height: 390px;
   }
 
   .project-content {
-    padding: 8px 0 20px;
+    padding:
+      8px 0
+      20px;
+  }
+
+  .project-card-product::before {
+    display: none;
   }
 }
 
@@ -479,11 +704,11 @@
    MOBILE
 ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .project-card {
-    padding: 28px 0;
+    padding: 29px 0;
 
-    gap: 22px;
+    gap: 23px;
   }
 
   .project-visual {
@@ -501,8 +726,13 @@
     right: 16px;
   }
 
+  .project-visual-origin {
+    top: 16px;
+    left: 16px;
+  }
+
   .project-heading {
-    gap: 14px;
+    gap: 13px;
   }
 
   .project-heading h3 {
@@ -510,7 +740,7 @@
       clamp(
         2rem,
         10vw,
-        3.3rem
+        3.2rem
       );
   }
 
@@ -519,8 +749,12 @@
     height: 42px;
   }
 
+  .project-type-info {
+    grid-template-columns: 1fr;
+  }
+
   .project-description {
-    margin-top: 18px;
+    margin-top: 20px;
   }
 
   .project-tech {
@@ -529,5 +763,23 @@
 
   .project-link {
     margin-top: 24px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-status.product
+  .project-status-dot {
+    animation: none;
+  }
+
+  .project-card:hover
+  .project-visual,
+  .project-card:hover
+  .project-visual img {
+    transform: none;
   }
 }

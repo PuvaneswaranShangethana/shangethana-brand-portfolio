@@ -1,0 +1,686 @@
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-section {
+  position: relative;
+  padding: 140px 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about-section::before {
+  content: "";
+
+  position: absolute;
+  top: 8%;
+  right: -12%;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 9%,
+      transparent
+    );
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   TOP LAYOUT
+========================================================= */
+
+.about-top {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(340px, 0.95fr);
+
+  gap: clamp(48px, 7vw, 90px);
+
+  align-items: end;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.about-label {
+  margin-bottom: 22px;
+
+  color: var(--accent);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.about-heading h2 {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 880px;
+
+  perspective: 900px;
+
+  font-size:
+    clamp(
+      3.2rem,
+      7vw,
+      7.2rem
+    );
+
+  line-height: 0.9;
+
+  letter-spacing: -0.055em;
+}
+
+.about-heading-line {
+  display: block;
+
+  transform-origin: bottom center;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.about-heading-accent {
+  color: var(--accent);
+}
+
+/* =========================================================
+   ABOUT STORY
+========================================================= */
+
+.about-story {
+  width: 100%;
+  max-width: 600px;
+
+  padding-bottom: 5px;
+}
+
+.about-description {
+  margin-bottom: 19px;
+
+  color: var(--text-muted);
+
+  font-size:
+    clamp(
+      0.96rem,
+      1.25vw,
+      1.08rem
+    );
+
+  line-height: 1.78;
+}
+
+.about-description:first-child {
+  color: var(--text-soft);
+}
+
+/* =========================================================
+   CAREER JOURNEY LINK
+========================================================= */
+
+.about-link {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 10px;
+  padding-bottom: 5px;
+
+  border-bottom:
+    1px solid
+    var(--border);
+
+  color: var(--text);
+
+  font-size: 0.82rem;
+  font-weight: 800;
+
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.about-link:hover {
+  color: var(--accent);
+
+  border-color:
+    var(--accent);
+}
+
+.about-link svg {
+  transition:
+    transform 200ms ease;
+}
+
+.about-link:hover svg {
+  transform:
+    translate(3px, -3px);
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.about-divider {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 1px;
+
+  margin:
+    82px 0
+    42px;
+
+  background: var(--border);
+}
+
+/* =========================================================
+   FOCUS HEADER
+========================================================= */
+
+.about-focus-header {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(280px, 0.65fr);
+
+  gap: 50px;
+
+  align-items: end;
+
+  margin-bottom: 40px;
+}
+
+.about-focus-header > div > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--accent);
+
+  font-size: 0.64rem;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.about-focus-header h3 {
+  max-width: 680px;
+
+  color: var(--text);
+
+  font-size:
+    clamp(
+      2rem,
+      3.2vw,
+      3.35rem
+    );
+
+  line-height: 1.03;
+
+  letter-spacing: -0.045em;
+}
+
+.about-focus-header > p {
+  width: 100%;
+  max-width: 440px;
+
+  margin-left: auto;
+
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   DISCIPLINES GRID
+========================================================= */
+
+.disciplines-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  width: 100%;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  background: var(--surface);
+}
+
+/* =========================================================
+   DISCIPLINE CARD
+========================================================= */
+
+.discipline-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 380px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding:
+    30px
+    28px
+    34px;
+
+  border-right:
+    1px solid
+    var(--border);
+
+  background: var(--surface);
+
+  transition:
+    background-color 250ms ease,
+    transform 250ms ease;
+}
+
+.discipline-card:last-child {
+  border-right: 0;
+}
+
+/* Accent bar */
+
+.discipline-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 28px;
+  right: 28px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: var(--accent);
+
+  transform:
+    scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 300ms ease;
+}
+
+.discipline-card:hover {
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 5%,
+      var(--surface)
+    );
+}
+
+.discipline-card:hover::before {
+  transform:
+    scaleX(1);
+}
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.discipline-card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 58px;
+}
+
+.discipline-number {
+  color: var(--text-muted);
+
+  font-size: 0.68rem;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+.discipline-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 50%;
+
+  color: var(--accent);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.discipline-card:hover
+.discipline-icon {
+  border-color:
+    var(--accent);
+
+  background:
+    var(--accent);
+
+  color: #ffffff;
+
+  transform:
+    rotate(8deg)
+    scale(1.04);
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.discipline-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.discipline-card h3 {
+  max-width: 100%;
+
+  color: var(--text);
+
+  font-size:
+    clamp(
+      1.4rem,
+      1.8vw,
+      2rem
+    );
+
+  line-height: 1.06;
+
+  letter-spacing: -0.035em;
+
+  overflow-wrap: break-word;
+}
+
+.discipline-card p {
+  width: 100%;
+
+  margin-top: 18px;
+
+  color: var(--text-muted);
+
+  font-size: 0.84rem;
+
+  line-height: 1.72;
+
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   LARGE LAPTOP
+========================================================= */
+
+@media (max-width: 1280px) {
+  .disciplines-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .discipline-card {
+    min-height: 330px;
+
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .discipline-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .discipline-card:nth-child(3),
+  .discipline-card:nth-child(4) {
+    border-bottom: 0;
+  }
+
+  .discipline-card:nth-child(4) {
+    border-right: 0;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .about-section {
+    padding: 115px 0;
+  }
+
+  .about-top {
+    grid-template-columns: 1fr;
+
+    gap: 46px;
+  }
+
+  .about-story {
+    max-width: 720px;
+  }
+
+  .about-focus-header {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .about-focus-header > p {
+    max-width: 650px;
+
+    margin-left: 0;
+  }
+}
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 760px) {
+  .about-divider {
+    margin:
+      64px 0
+      34px;
+  }
+
+  .disciplines-grid {
+    grid-template-columns: 1fr;
+
+    border-radius: 22px;
+  }
+
+  .discipline-card {
+    min-height: auto;
+
+    padding:
+      28px
+      26px
+      32px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .discipline-card:last-child {
+    border-bottom: 0;
+  }
+
+  .discipline-card-top {
+    margin-bottom: 42px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .about-section {
+    padding: 88px 0;
+  }
+
+  .about-heading h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        14vw,
+        4.8rem
+      );
+  }
+
+  .about-focus-header {
+    margin-bottom: 28px;
+  }
+
+  .about-focus-header h3 {
+    font-size:
+      clamp(
+        1.8rem,
+        9vw,
+        2.8rem
+      );
+  }
+
+  .discipline-card {
+    padding: 24px;
+  }
+
+  .discipline-card-top {
+    margin-bottom: 36px;
+  }
+
+  .discipline-card h3 {
+    font-size:
+      clamp(
+        1.6rem,
+        8vw,
+        2.2rem
+      );
+  }
+
+  .discipline-card p {
+    font-size: 0.84rem;
+  }
+
+  .about-link {
+    margin-top: 4px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .about-section {
+    padding: 76px 0;
+  }
+
+  .discipline-card {
+    padding:
+      22px
+      20px
+      26px;
+  }
+
+  .discipline-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .discipline-card-top {
+    margin-bottom: 32px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .discipline-card,
+  .discipline-icon,
+  .discipline-card::before {
+    transition: none;
+  }
+
+  .discipline-card:hover
+  .discipline-icon {
+    transform: none;
+  }
+}

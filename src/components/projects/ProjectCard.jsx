@@ -1,38 +1,86 @@
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+} from "lucide-react";
+
 import "./ProjectCard.css";
+
+function getStatusClass(status) {
+  const normalized =
+    status.toLowerCase();
+
+  if (
+    normalized.includes("public") ||
+    normalized.includes("product")
+  ) {
+    return "product";
+  }
+
+  if (
+    normalized.includes("development")
+  ) {
+    return "development";
+  }
+
+  return "academic";
+}
 
 function ProjectCard({
   number,
   title,
   category,
+  projectType,
+  applicationType,
+  origin,
   status,
   description,
-  technologies,
+  technologies = [],
   image,
   github,
   featured = false,
+  variant = "academic",
 }) {
+  const statusClass =
+    getStatusClass(status);
+
   return (
     <article
-      className={`project-card ${
-        featured ? "featured" : ""
-      }`}
+      className={`
+        project-card
+        project-card-${variant}
+        ${featured ? "featured" : ""}
+      `}
     >
       <div className="project-visual">
         {image ? (
           <img
             src={image}
-            alt={`${title} project`}
+            alt={`${title} interface`}
+            loading="lazy"
           />
         ) : (
           <div className="project-placeholder">
-            <span>{number}</span>
-            <strong>{title}</strong>
+            <span>
+              {applicationType}
+            </span>
+
+            <strong>
+              {title}
+            </strong>
+
+            <small>
+              {projectType}
+            </small>
           </div>
         )}
 
         <span className="project-number">
           {number}
+        </span>
+
+        <span
+          className={`project-visual-origin ${variant}`}
+        >
+          {origin}
         </span>
       </div>
 
@@ -44,19 +92,16 @@ function ProjectCard({
             </p>
 
             <span
-              className={`project-status ${
-                status.includes("Academic")
-                  ? "academic"
-                  : status.includes("Development")
-                  ? "development"
-                  : "progress"
-              }`}
+              className={`project-status ${statusClass}`}
             >
               <span className="project-status-dot" />
+
               {status}
             </span>
 
-            <h3>{title}</h3>
+            <h3>
+              {title}
+            </h3>
           </div>
 
           {github && (
@@ -72,16 +117,50 @@ function ProjectCard({
           )}
         </div>
 
+        <div className="project-type-info">
+          <div>
+            <span>
+              Project Type
+            </span>
+
+            <strong>
+              {projectType}
+            </strong>
+          </div>
+
+          <div>
+            <span>
+              Application
+            </span>
+
+            <strong>
+              {applicationType}
+            </strong>
+          </div>
+
+          <div>
+            <span>
+              Origin
+            </span>
+
+            <strong>
+              {origin}
+            </strong>
+          </div>
+        </div>
+
         <p className="project-description">
           {description}
         </p>
 
         <div className="project-tech">
-          {technologies.map((technology) => (
-            <span key={technology}>
-              {technology}
-            </span>
-          ))}
+          {technologies.map(
+            (technology) => (
+              <span key={technology}>
+                {technology}
+              </span>
+            )
+          )}
         </div>
 
         {github && (
@@ -92,6 +171,7 @@ function ProjectCard({
             className="project-link"
           >
             GitHub Repository
+
             <ArrowUpRight size={17} />
           </a>
         )}

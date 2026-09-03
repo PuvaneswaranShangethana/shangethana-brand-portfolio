@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+} from "lucide-react";
 import gsap from "gsap";
 
 import HeroPortrait3D from "../three/HeroPortrait3D";
@@ -43,13 +46,22 @@ function HeroSection() {
           "-=0.4"
         )
         .from(
+          ".hero-career-note",
+          {
+            opacity: 0,
+            y: 18,
+            duration: 0.6,
+          },
+          "-=0.4"
+        )
+        .from(
           ".hero-actions",
           {
             opacity: 0,
             y: 18,
             duration: 0.6,
           },
-          "-=0.45"
+          "-=0.4"
         )
         .from(
           ".hero-meta",
@@ -63,16 +75,14 @@ function HeroSection() {
           ".hero-visual",
           {
             opacity: 0,
-            scale: 0.9,
+            scale: 0.92,
             duration: 1.1,
           },
           "-=1"
         );
     }, heroRef);
 
-    return () => {
-      context.revert();
-    };
+    return () => context.revert();
   }, []);
 
   return (
@@ -84,12 +94,12 @@ function HeroSection() {
       <div className="container hero-layout">
         <div className="hero-copy">
           <p className="hero-kicker">
-            SOFTWARE ENGINEER × AI DEVELOPER × UI/UX DESIGNER
+            SOFTWARE ENGINEERING × AI × PRODUCT DESIGN
           </p>
 
           <h1 className="hero-title">
             <span className="hero-title-line">
-              I DESIGN
+              I BUILD
             </span>
 
             <span className="hero-title-line">
@@ -97,21 +107,24 @@ function HeroSection() {
             </span>
 
             <span className="hero-title-line hero-title-accent">
-              PRODUCTS.
+              SOLUTIONS.
             </span>
           </h1>
 
           <p className="hero-description">
-            I build thoughtful digital products across software engineering,
-            artificial intelligence and user experience design.
+            Software Engineering undergraduate building practical
+            applications across full-stack development, artificial
+            intelligence, databases and user-centred design.
           </p>
+
+          
 
           <div className="hero-actions">
             <a
-              href="#work"
+              href="#projects"
               className="btn btn-primary"
             >
-              Explore Work
+              Explore Projects
               <ArrowUpRight size={18} />
             </a>
 
@@ -126,7 +139,10 @@ function HeroSection() {
 
           <div className="hero-meta">
             <span>Batticaloa, Sri Lanka</span>
-            <span>Available for opportunities</span>
+
+            <span>
+              Open to junior software engineering opportunities
+            </span>
           </div>
         </div>
 
@@ -135,7 +151,7 @@ function HeroSection() {
             <HeroPortrait3D />
 
             <span className="hero-visual-label hero-label-top">
-              DESIGN
+              SOFTWARE
             </span>
 
             <span className="hero-visual-label hero-label-right">
@@ -143,7 +159,7 @@ function HeroSection() {
             </span>
 
             <span className="hero-visual-label hero-label-bottom">
-              ENGINEERING
+              PRODUCT
             </span>
           </div>
         </div>

@@ -1,0 +1,347 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  position: relative;
+
+  padding: 72px 0 28px;
+
+  border-top: 1px solid var(--border);
+
+  background: var(--surface);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.8fr);
+
+  gap: 70px;
+
+  padding-bottom: 60px;
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand {
+  min-width: 0;
+}
+
+.footer-logo {
+  width: fit-content;
+
+  display: inline-block;
+
+  color: var(--text);
+
+  font-size: 1rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    color 200ms ease;
+}
+
+.footer-logo:hover {
+  color: var(--accent);
+}
+
+.footer-logo span {
+  color: var(--accent);
+}
+
+.footer-brand p {
+  max-width: 580px;
+
+  margin-top: 18px;
+
+  color: var(--text-muted);
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   CAREER PATH
+========================================================= */
+
+.footer-career-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 7px;
+
+  max-width: 700px;
+
+  margin-top: 24px;
+
+  color: var(--text-muted);
+
+  font-size: 0.63rem;
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+.footer-career-path b {
+  color: var(--accent);
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.footer-navigation {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 40px;
+}
+
+.footer-navigation > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.footer-column-label {
+  margin-bottom: 7px;
+
+  color: var(--text-muted);
+
+  font-size: 0.58rem;
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.footer-navigation a {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: var(--text);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.footer-navigation a:hover {
+  color: var(--accent);
+
+  transform:
+    translateX(2px);
+}
+
+.footer-navigation a svg {
+  flex-shrink: 0;
+
+  transition:
+    transform 200ms ease;
+}
+
+.footer-navigation a:hover svg {
+  transform:
+    translate(2px, -2px);
+}
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom > div {
+  min-width: 0;
+}
+
+.footer-bottom p {
+  color: var(--text-muted);
+
+  font-size: 0.68rem;
+
+  line-height: 1.5;
+}
+
+.footer-bottom > div > span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--text-muted);
+
+  font-size: 0.6rem;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.footer-top {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: var(--text);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  transition:
+    color 200ms ease;
+}
+
+.footer-top:hover {
+  color: var(--accent);
+}
+
+.footer-top svg {
+  transition:
+    transform 200ms ease;
+}
+
+.footer-top:hover svg {
+  transform:
+    translateY(-3px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    gap: 48px;
+  }
+
+  .footer-brand p {
+    max-width: 650px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+  .footer {
+    padding:
+      58px 0
+      24px;
+  }
+
+  .footer-main {
+    gap: 42px;
+
+    padding-bottom: 45px;
+  }
+
+  .footer-navigation {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 25px;
+  }
+
+  .footer-career-path {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .footer-career-path b {
+    transform: rotate(90deg);
+
+    margin-left: 4px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .footer-navigation {
+    grid-template-columns: 1fr;
+
+    gap: 32px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-logo,
+  .footer-navigation a,
+  .footer-navigation a svg,
+  .footer-top,
+  .footer-top svg {
+    transition: none;
+  }
+
+  .footer-navigation a:hover,
+  .footer-navigation a:hover svg,
+  .footer-top:hover svg {
+    transform: none;
+  }
+}

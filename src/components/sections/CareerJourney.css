@@ -1,0 +1,736 @@
+/* =========================================================
+   CAREER JOURNEY
+========================================================= */
+
+.career-journey {
+  position: relative;
+  padding: 150px 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.career-journey::before {
+  content: "";
+
+  position: absolute;
+
+  left: -180px;
+  top: 18%;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 8%,
+      transparent
+    );
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.journey-header {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(340px, 0.92fr);
+
+  gap: 80px;
+
+  align-items: end;
+
+  margin-bottom: 95px;
+}
+
+.journey-eyebrow {
+  margin-bottom: 22px;
+
+  color: var(--accent);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.journey-heading h2 {
+  display: flex;
+  flex-direction: column;
+
+  perspective: 900px;
+
+  font-size:
+    clamp(
+      3.2rem,
+      7vw,
+      7.2rem
+    );
+
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.journey-heading-line {
+  display: block;
+
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+.journey-heading-accent {
+  color: var(--accent);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.journey-intro {
+  width: 100%;
+  max-width: 610px;
+}
+
+.journey-intro > p {
+  color: var(--text-muted);
+
+  font-size:
+    clamp(
+      0.96rem,
+      1.3vw,
+      1.08rem
+    );
+
+  line-height: 1.78;
+}
+
+.journey-path-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 28px;
+  padding-top: 20px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.journey-path-summary span {
+  white-space: nowrap;
+}
+
+.journey-path-summary svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.journey-track {
+  position: relative;
+  z-index: 2;
+
+  padding-top: 38px;
+}
+
+.journey-track-line {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  overflow: hidden;
+
+  background: var(--border);
+}
+
+.journey-progress-line {
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      to right,
+      var(--accent),
+      color-mix(
+        in srgb,
+        var(--accent) 55%,
+        transparent
+      )
+    );
+
+  transform: scaleX(0);
+}
+
+/* =========================================================
+   GRID - 4 CAREER STAGES
+========================================================= */
+
+.journey-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.journey-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 540px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px;
+
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  background: var(--surface);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+
+.journey-card:hover {
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 5%,
+      var(--surface)
+    );
+}
+
+/* =========================================================
+   CURRENT STAGE
+========================================================= */
+
+.journey-card-current {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(
+        in srgb,
+        var(--accent) 10%,
+        var(--surface)
+      ),
+      var(--surface)
+    );
+}
+
+/* =========================================================
+   NEXT STAGE
+========================================================= */
+
+.journey-card-next {
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 2%,
+      var(--surface)
+    );
+}
+
+/* =========================================================
+   FUTURE AI STAGE
+========================================================= */
+
+.journey-card-future {
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 3%,
+      var(--surface)
+    );
+}
+
+/* =========================================================
+   ENTREPRENEUR VISION
+========================================================= */
+
+.journey-card-vision {
+  background:
+    radial-gradient(
+      circle at top right,
+      color-mix(
+        in srgb,
+        var(--accent) 12%,
+        transparent
+      ),
+      transparent 45%
+    ),
+    var(--surface);
+}
+
+/* =========================================================
+   MARKERS
+========================================================= */
+
+.journey-card-marker {
+  position: absolute;
+
+  top: -55px;
+  left: 26px;
+
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--bg);
+
+  color: var(--text-muted);
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  z-index: 3;
+}
+
+.journey-card-current
+.journey-card-marker {
+  border-color: var(--accent);
+
+  background: var(--accent);
+  color: #ffffff;
+
+  box-shadow:
+    0 0 0 6px var(--accent-soft);
+}
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.journey-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.journey-stage {
+  color: var(--accent);
+
+  font-size: 0.64rem;
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.journey-icon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  color: var(--accent);
+
+  transition:
+    transform 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
+}
+
+.journey-card:hover
+.journey-icon {
+  transform:
+    rotate(8deg)
+    scale(1.04);
+
+  border-color: var(--accent);
+
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.journey-status {
+  width: fit-content;
+
+  margin-top: 36px;
+
+  padding: 7px 10px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--bg);
+
+  color: var(--text-muted);
+
+  font-size: 0.58rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.journey-card-current
+.journey-status {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 38%,
+      var(--border)
+    );
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
+}
+
+.journey-card-next
+.journey-status {
+  color: var(--text-soft);
+}
+
+.journey-card-future
+.journey-status,
+.journey-card-vision
+.journey-status {
+  border-style: dashed;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.journey-card h3 {
+  margin-top: 22px;
+
+  color: var(--text);
+
+  font-size:
+    clamp(
+      1.55rem,
+      2.25vw,
+      2.6rem
+    );
+
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.journey-description {
+  margin-top: 18px;
+
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   FOCUS AREA
+========================================================= */
+
+.journey-focus {
+  margin-top: auto;
+
+  padding-top: 34px;
+}
+
+.journey-focus-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--text-muted);
+
+  font-size: 0.56rem;
+  font-weight: 800;
+
+  letter-spacing: 0.11em;
+
+  text-transform: uppercase;
+}
+
+.journey-focus-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.journey-focus-list span {
+  padding: 7px 9px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--bg);
+
+  color: var(--text-muted);
+
+  font-size: 0.6rem;
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+/* =========================================================
+   CURRENT STAGE HIGHLIGHT
+========================================================= */
+
+.journey-card-current
+.journey-focus-list span {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 20%,
+      var(--border)
+    );
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.journey-footer {
+  display: grid;
+
+  grid-template-columns:
+    190px
+    minmax(0, 680px);
+
+  gap: 30px;
+
+  margin-top: 46px;
+  padding-top: 24px;
+
+  border-top: 1px solid var(--border);
+}
+
+.journey-footer > span {
+  color: var(--accent);
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.journey-footer p {
+  color: var(--text-muted);
+
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   LARGE LAPTOP
+========================================================= */
+
+@media (max-width: 1280px) {
+  .journey-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .journey-card {
+    min-height: 470px;
+  }
+
+  .journey-card-marker {
+    display: none;
+  }
+
+  .journey-track {
+    padding-top: 20px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+  .career-journey {
+    padding: 120px 0;
+  }
+
+  .journey-header {
+    grid-template-columns: 1fr;
+
+    gap: 42px;
+
+    margin-bottom: 70px;
+  }
+
+  .journey-intro {
+    max-width: 720px;
+  }
+
+  .journey-card {
+    min-height: 430px;
+  }
+}
+
+/* =========================================================
+   SMALL TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-card {
+    min-height: auto;
+
+    padding: 26px;
+  }
+
+  .journey-focus {
+    margin-top: 36px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .career-journey {
+    padding: 88px 0;
+  }
+
+  .journey-heading h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        14vw,
+        4.8rem
+      );
+  }
+
+  .journey-header {
+    margin-bottom: 54px;
+  }
+
+  .journey-path-summary {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .journey-path-summary svg {
+    transform: rotate(90deg);
+  }
+
+  .journey-card {
+    padding: 24px;
+  }
+
+  .journey-status {
+    margin-top: 28px;
+  }
+
+  .journey-footer {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .career-journey {
+    padding: 76px 0;
+  }
+
+  .journey-card {
+    padding: 22px 20px 26px;
+  }
+
+  .journey-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-card,
+  .journey-icon {
+    transition: none;
+  }
+
+  .journey-card:hover
+  .journey-icon {
+    transform: none;
+  }
+
+  .journey-progress-line {
+    transform: scaleX(1);
+  }
+}

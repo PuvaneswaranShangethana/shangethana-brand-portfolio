@@ -1,38 +1,31 @@
 .projects-section {
   position: relative;
-
   padding: 140px 0;
-
   background: var(--bg);
 }
 
 .projects-header {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 48px;
-
   align-items: end;
-
-  margin-bottom: 78px;
+  margin-bottom: 82px;
 }
 
 .projects-eyebrow {
   margin-bottom: 20px;
-
   color: var(--accent);
-
   font-size: 0.72rem;
   font-weight: 800;
-
   letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .projects-header h2 {
   max-width: 980px;
-
-  font-size: clamp(3.2rem, 7vw, 7.4rem);
+  font-size: clamp(3.2rem, 7vw, 7rem);
   line-height: 0.9;
+  letter-spacing: -0.055em;
 }
 
 .projects-header h2 span {
@@ -40,17 +33,155 @@
 }
 
 .projects-intro {
-  max-width: 420px;
-
+  max-width: 460px;
   margin-left: auto;
-
   padding-bottom: 8px;
+  color: var(--text-muted);
+  line-height: 1.75;
 }
+
+/* =========================
+   PROJECT GROUPS
+========================= */
+
+.projects-group {
+  margin-top: 70px;
+}
+
+.projects-group:first-of-type {
+  margin-top: 0;
+}
+
+.projects-group-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-group-header > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.projects-group-index {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.projects-group-header h3 {
+  color: var(--text);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.projects-group-header p {
+  max-width: 430px;
+  margin-left: auto;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* =========================
+   ACADEMIC GROUP
+========================= */
+
+.academic-projects {
+  position: relative;
+}
+
+.academic-projects::before {
+  content: "ACADEMIC";
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+/* =========================
+   PRODUCT DEVELOPMENT GROUP
+========================= */
+
+.product-projects-group {
+  margin-top: 100px;
+  padding: 44px;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--accent) 30%,
+    var(--border)
+  );
+  border-radius: 32px;
+  background:
+    radial-gradient(
+      circle at top right,
+      color-mix(
+        in srgb,
+        var(--accent) 12%,
+        transparent
+      ),
+      transparent 35%
+    ),
+    var(--surface);
+}
+
+.product-group-header {
+  border-bottom-color:
+    color-mix(
+      in srgb,
+      var(--accent) 30%,
+      var(--border)
+    );
+}
+
+.product-group-header .projects-group-index {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.product-group-header h3 {
+  color: var(--accent);
+}
+
+.product-projects {
+  position: relative;
+}
+
+.product-projects::before {
+  content: "PRODUCT DEVELOPMENT";
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+/* =========================
+   GRID
+========================= */
 
 .projects-grid {
   display: flex;
   flex-direction: column;
 }
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 1000px) {
   .projects-section {
@@ -59,27 +190,65 @@
 
   .projects-header {
     grid-template-columns: 1fr;
-
     gap: 28px;
-
-    margin-bottom: 58px;
+    margin-bottom: 60px;
   }
 
   .projects-intro {
     margin-left: 0;
   }
+
+  .projects-group-header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .projects-group-header p {
+    margin-left: 0;
+  }
+
+  .product-projects-group {
+    padding: 32px;
+  }
 }
 
-@media (max-width: 600px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
   .projects-section {
     padding: 84px 0;
   }
 
   .projects-header {
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
 
   .projects-header h2 {
     font-size: clamp(2.8rem, 14vw, 4.8rem);
+  }
+
+  .projects-group {
+    margin-top: 54px;
+  }
+
+  .projects-group-header {
+    margin-bottom: 22px;
+  }
+
+  .projects-group-header > div {
+    align-items: flex-start;
+  }
+
+  .projects-group-index {
+    width: 30px;
+    height: 30px;
+  }
+
+  .product-projects-group {
+    margin-top: 70px;
+    padding: 22px;
+    border-radius: 24px;
   }
 }
